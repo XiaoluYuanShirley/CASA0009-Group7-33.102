@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"><link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            #container {
+    height: 600px;
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 310px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+        </style>
+        <script src="https://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://cdn.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+        <script src="https://cdn.highcharts.com.cn/highcharts/themes/dark-unica.js"></script>
+    </head>
+    <body>
+        <div id="container" style="min-width:400px;height:800px"></div>
+        <script>
+            var chart = Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Crime change in 2020'
+    },
+    xAxis: {
+        categories: ['Jan-20','Feb-20','Mar-20','Apr-20','May-20','Jun-20','Jul-20','Aug-20','Sep-20','Oct-20','Nov-20','Dec-20']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Crime change in 2020'
+        },
+        stackLabels: {  // Crime change in 2020
+            enabled: true,
+            style: {
+                fontWeight: 'blod',
+                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+        }
+    },
+    legend: {
+        align: 'right',
+        x: -30,
+        verticalAlign: 'top',
+        y: 20,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'gray',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false
+    },
+    tooltip: {
+        formatter: function () {
+            return '<b>' + this.x + '</b><br/>' +
+                this.series.name + ': ' + this.y + '<br/>' +
+                'Total: ' + this.point.stackTotal;
+        }
+    },
+    plotOptions: {
+        column: {
+            stacking: 'normal',
+            dataLabels: {
+                enabled: true,
+                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                style: {
+                    // 如果不需要数据标签阴影，可以将 textOutline 设置为 'none'
+                    textOutline: '1px 1px black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Anti-social behaviour',
+        data: [73, 79, 53, 25, 46,41,35,49,56,61,74,63]
+    }, {
+        name: 'Bicycle theft',
+        data: [37, 31, 29, 8, 14,38,42,64,55,63,45,14]
+    }, {
+        name: 'Burglary',
+        data: [30, 14, 22, 27, 16,9,14,12,18,12,5,9]
+    },{
+        name: 'Criminal damage and arson',
+        data: [19, 22, 16, 6, 13,10,21,22,28,28,10,19]
+    },{
+        name: 'Drugs',
+        data: [70, 34, 36, 20, 29,45,59,50,57,46,63,50]
+    },{
+        name: 'Other theft',
+        data: [181, 214, 155, 16, 10,20,39,50,69,68,32,40]
+    },{
+        name: 'Other crime',
+        data: [14, 10, 11, 11, 6,6,6,7,7,10,5,9]
+    },{
+        name: 'Possession of weapons',
+        data: [5, 2, 8, 5, 2,7,6,4,4,1,2,5]
+    },{ 
+        name: 'Public order',
+        data: [31,31, 30, 11, 9,22,26,28,31,19,29,14] 
+    },{ 
+        name: 'Shoplifting',
+        data: [63,73, 62, 44, 18,47,61,68,53,60,59,46] 
+    },{ 
+        name: 'Theft from the person',
+        data: [65,86, 48, 15, 11,13,44,26,35,43,49,27] 
+    },{ 
+        name: 'Vehicle crime',
+        data: [26,20, 17, 2, 8,5,20,10,16,10,9,10] 
+    },{ 
+        name: 'Violence and sexual offences',
+        data: [103,86, 72, 22, 20,20,41,54,62,63,46,53] 
+    },{
+        name: 'Robbery',
+        data: [12,7,5,0,5,5,10,9,5,6,12,9]  
+    }]
+}); 
+        </script>
+    </body>
+</html>
